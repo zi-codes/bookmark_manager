@@ -1,5 +1,3 @@
-
-
 feature 'it has some bookmarks' do
   scenario 'check the page is working' do
     visit '/'
