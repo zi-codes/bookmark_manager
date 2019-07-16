@@ -8,6 +8,11 @@ I would like to retrieve a list of bookmarks
 ```
 
 - Add new bookmarks
+
+As User
+So I can save my favourite website
+I would like to be able to add a bookmark
+
 - Delete bookmarks
 - Update bookmarks
 - Comment on bookmarks

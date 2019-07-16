@@ -7,9 +7,9 @@ describe Bookmark do
   describe '#all' do
     it 'returns a list of bookmarks' do
 
-      Bookmark.create('http://www.makersacademy.com')
-      Bookmark.create('http://www.destroyallsoftware.com')
-      Bookmark.create('http://www.google.com')
+      Bookmark.create('http://www.makersacademy.com', 'makers')
+      Bookmark.create('http://www.destroyallsoftware.com', 'destroy')
+      Bookmark.create('http://www.google.com', 'google')
 
       bookmarks = Bookmark.all
 

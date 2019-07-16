@@ -10,13 +10,13 @@ class Bookmark
     end
   end
 
-  def self.create(url_to_save)
-    self.connection.exec("INSERT INTO bookmarks (url) VALUES ('#{url_to_save}')")
+  def self.create(url_to_save, url_title)
+    self.connection.exec("INSERT INTO bookmarks (url, title) VALUES ('#{url_to_save}', '#{url_title}')")
   end
 
   def self.all
     result = self.connection.exec("SELECT * FROM bookmarks;")
-    result.map { |bookmark| bookmark['url'] }
+    result
   end
 
   ## non-refactored version below
