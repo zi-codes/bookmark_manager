@@ -21,6 +21,10 @@ class Bookmark
     Bookmark.new(id: result[0]['id'], title: result[0]['title'], url: result[0]['url'])
   end
 
+  def self.delete(id:)
+    self.connection.exec("DELETE FROM bookmarks WHERE id = '#{id}'")
+  end
+
   def self.all
     result = self.connection.exec("SELECT * FROM bookmarks;")
     result.map do |bookmark|

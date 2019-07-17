@@ -3,13 +3,19 @@ require_relative './lib/bookmark'
 require 'pg'
 
 class BookmarkManager < Sinatra::Base
-  enable
+  enable :sessions, :method_override
+
   get '/' do
     erb :index
   end
 
   get '/add_bookmark' do
     erb :add_bookmark
+  end
+
+  delete '/bookmarks/:id' do
+    Bookmark.delete(id: params[:id])
+    redirect '/bookmarks'
   end
 
   post '/save_url' do
