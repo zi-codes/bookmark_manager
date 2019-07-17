@@ -6,5 +6,6 @@ feature "adding bookmarks" do
     fill_in 'title', :with => 'github'
     click_button('Submit')
     expect(page).to have_link('github', href: 'http://www.github.com')
+    expect(page.status_code).to eq(200)
   end
 end
