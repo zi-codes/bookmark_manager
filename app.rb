@@ -60,7 +60,7 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/bookmarks/:id/comments/save' do
-    Comment.create(params[:comment],params[:id])
+    Comment.create(text: params[:comment], bookmark_id: params[:id])
     redirect '/bookmarks'
   end
 
