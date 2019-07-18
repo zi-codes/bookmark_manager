@@ -12,7 +12,7 @@ feature "checking valid url" do
   scenario "raises an error message if invalid url is submitted in update url" do
     visit('/')
     click_button('Add Bookmark')
-    fill_in 'url', :with => 'http://www.github.com'
+    fill_in 'url', :with => 'http://www.github.co.uk'
     fill_in 'title', :with => 'github'
     click_button('Submit')
     click_button('Edit')

@@ -18,7 +18,7 @@ describe Comment do
   describe '.create' do
     it 'creates a new comment' do
       bookmark = Bookmark.create(url: 'http://www.makersacademy.com', title: 'makers')
-      comment = Comment.create(text: 'nice comment', bookmark_id: 1)
+      comment = Comment.create(text: 'nice comment', bookmark_id: bookmark.id)
 
       expect(comment).to be_a Comment
       expect(comment.text).to eq 'nice comment'
