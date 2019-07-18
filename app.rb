@@ -1,10 +1,13 @@
 require 'sinatra/base'
+require 'sinatra/flash'
 require_relative './lib/bookmark'
 require_relative './database_connection_setup'
+require_relative './lib/url_checker'
 
 class BookmarkManager < Sinatra::Base
   enable :sessions, :method_override
-
+  include UrlChecker
+  register Sinatra::Flash
   get '/' do
     erb :index
   end
@@ -19,8 +22,12 @@ class BookmarkManager < Sinatra::Base
   end
 
   patch '/bookmarks/:id' do
-    Bookmark.update(id: params[:id], title: params[:title], url: params[:url])
-    redirect('/bookmarks')
+    if valid_url?(params[:url])
+      Bookmark.update(id: params[:id], title: params[:title], url: params[:url])
+      redirect('/bookmarks')
+    else
+      flash[:notice] = "You have submitted an invalid url"
+    end
   end
 
   get '/bookmarks/:id/edit' do
@@ -30,8 +37,12 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/save_url' do
-    Bookmark.create(url: params[:url], title: params[:title])
-    redirect('/bookmarks')
+    if valid_url?(params[:url])
+      Bookmark.create(url: params[:url], title: params[:title])
+      redirect('/bookmarks')
+    else
+      flash[:notice] = "You have submitted an invalid url"
+    end
   end
 
   get '/bookmarks' do
