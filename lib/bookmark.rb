@@ -18,7 +18,7 @@ class Bookmark
   end
 
   def self.delete(id:)
-    self.exec("DELETE FROM bookmarks WHERE id = '#{id}'")
+    self.exec("DELETE FROM bookmarks WHERE id = '#{id}';")
   end
 
   def self.all
