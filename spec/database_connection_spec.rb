@@ -11,6 +11,13 @@ describe DatabaseConnection do
       connection = DatabaseConnection.setup('bookmark_manager_test')
 
       expect(DatabaseConnection.connection).to eq connection
+    end
   end
+  describe '.query' do
+    it "receives SQL query string and passes that string to the database" do
+      connection = DatabaseConnection.setup('bookmark_manager_test')
+      expect(connection).to receive(:exec).with("query string")
+      DatabaseConnection.query("query string")
+    end
   end
 end
