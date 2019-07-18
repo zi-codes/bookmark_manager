@@ -8,9 +8,16 @@
       <input type='hidden' name='_method' value='DELETE'/>
       <input type="submit" value="Delete Bookmark" />
     </form>
-       <form action='/bookmarks/<%= bookmark.id %>/edit' method="get">
+    <form action='/bookmarks/<%= bookmark.id %>/edit' method="get">
       <input type='hidden' name='_method' value='UPDATE'/>
       <input type="submit" value="Edit" />
+    </form>
+    # comments buttons
+    <form action='/bookmarks/<%= bookmark.id %>/comments/new' method="get">
+      <input type="submit" value="Add Comment" />
+    </form>
+    <form action='/bookmarks/<%= bookmark.id %>/comments' method="get">
+      <input type="submit" value="View Comments" />
     </form>
   </li>
   <% end %>

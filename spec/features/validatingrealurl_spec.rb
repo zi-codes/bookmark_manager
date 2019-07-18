@@ -16,7 +16,7 @@ feature "checking valid url" do
     fill_in 'title', :with => 'github'
     click_button('Submit')
     click_button('Edit')
-    fill_in 'url', :with => 'http://www,github.com'
+    fill_in 'url', :with => 'httuyfuyp://www,github.com'
     fill_in 'title', :with => 'github'
     click_button('Submit')
     expect(page).to have_content('You have submitted an invalid url')
